@@ -12,19 +12,34 @@ const songsSlice = createSlice({
             state.splice(index, 1);
         }
     }
+});
+
+
+const moviesSlice = createSlice({
+    name: "movie",
+    initialState: [],
+    reducers: {
+        addMovie(state, action){
+            state.push(action.payload);
+        },
+        removeMovie(state, action){
+            //
+        }
+    }
 })
 
 
 const store = configureStore({
     reducer: {
-        songs: songsSlice.reducer
+        songs: songsSlice.reducer,
+        movies: moviesSlice.reducer,
     }
 });
 
 // // console.log(store);
 
-// let initialState = store.getState();
-// console.log(JSON.stringify(initialState));
+let initialState = store.getState();
+console.log(JSON.stringify(initialState));
 
 // // store.dispatch({
 // //     type: 'song/addSong',
@@ -39,3 +54,4 @@ const store = configureStore({
 
 export { store };
 export const { addSong, removeSong } = songsSlice.actions;
+export const { addMovie } = moviesSlice.actions;
