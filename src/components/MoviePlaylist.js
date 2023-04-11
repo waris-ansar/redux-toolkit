@@ -24,7 +24,6 @@ function MoviePlaylist() {
         >
           X
         </button>
-        <div>remove able code</div>
       </li>
     );
   });
