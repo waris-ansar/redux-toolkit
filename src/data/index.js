@@ -11,3 +11,7 @@ export const createRandomMovie = () => {
 export const createRandomSong = () => {
   return faker.music.songName();
 };
+
+export const createRandomSeries = () => {
+  return `${faker.word.adjective()} Best series`;
+};

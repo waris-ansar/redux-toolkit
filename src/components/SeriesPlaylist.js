@@ -1,32 +1,32 @@
 import { useDispatch, useSelector } from "react-redux";
 import { createRandomMovie } from "../data";
-import { addMovie, removeMovie } from "../store";
+import { addSeriesToList, removeSeriesFromList } from "../store";
 
-function MoviePlaylist() {
 
+
+function SeriesPlaylist() {
   const dispatch = useDispatch();
 
   // To Do:
   // Get list of movies
-  const moviePlaylist = useSelector((state)=>{
-    console.log(state)
-    return(state.movies)
+  const moviePlaylist = useSelector((state) => {
+    // console.log(state.seriesList)
+    return state.seriesList
   });
 
-  const handleMovieAdd = (movie) => {
-    const action = addMovie(movie);
-    dispatch(action)
+  const handleMovieAdd = (series) => {
+    dispatch(addSeriesToList(series));
   };
-  const handleMovieRemove = (movie) => {
-    dispatch(removeMovie(movie));
+  const handleMovieRemove = (series) => {
+    dispatch(removeSeriesFromList(series))
   };
 
-  const renderedMovies = moviePlaylist.map((movie) => {
+  const renderedMovies = moviePlaylist.map((series) => {
     return (
-      <li key={movie}>
-        {movie}
+      <li key={series}>
+        {series}
         <button
-          onClick={() => handleMovieRemove(movie)}
+          onClick={() => handleMovieRemove(series)}
           className="button is-danger"
         >
           X
@@ -38,13 +38,13 @@ function MoviePlaylist() {
   return (
     <div className="content">
       <div className="table-header">
-        <h3 className="subtitle is-3">Movie Playlist</h3>
+        <h3 className="subtitle is-3">Series Playlist</h3>
         <div className="buttons">
           <button
             onClick={() => handleMovieAdd(createRandomMovie())}
             className="button is-link"
           >
-            + Add Movie to Playlist
+            + Add Series to Playlist
           </button>
         </div>
       </div>
@@ -53,4 +53,4 @@ function MoviePlaylist() {
   );
 }
 
-export default MoviePlaylist;
+export default SeriesPlaylist;
